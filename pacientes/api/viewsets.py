@@ -12,6 +12,7 @@ from sklearn.neural_network import MLPClassifier
 
 modelo = MLPClassifier(solver='adam', alpha=1e-5, hidden_layer_sizes=(1024, 128),
                                random_state=1, max_iter=150)
+
 primeiroAcesso = 0
 
 class TreinarRNA(APIView):
@@ -31,10 +32,7 @@ class TreinarRNA(APIView):
 
         print(allPacients)
         print(resposta)
-        print(modelo)
         modelo.fit(allPacients, resposta)
-
-        print(modelo)
         print("RNA Treinada!")
 
         serializer = PacientSerializer(Pacients, many=True)
